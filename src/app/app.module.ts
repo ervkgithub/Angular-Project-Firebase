@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { FormsModule } from '@angular/forms';
@@ -28,6 +27,9 @@ import { SweetAlert2Module } from "@sweetalert2/ngx-sweetalert2";
 import {NgxPaginationModule} from 'ngx-pagination';
 import { CartComponent } from './common/cart/cart.component';
 import { PaymentComponent } from './common/payment/payment.component';
+import { AllusersComponent } from './allusers/allusers.component';
+import {MatTableModule} from '@angular/material/table';
+import { FilterPipe } from '../app/filter/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { PaymentComponent } from './common/payment/payment.component';
     ProfileComponent,
     HomeComponent,
     CartComponent,
-    PaymentComponent
+    PaymentComponent,
+    AllusersComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -57,7 +61,8 @@ import { PaymentComponent } from './common/payment/payment.component';
     MatInputModule,
     NgHttpLoaderModule.forRoot(),
     SweetAlert2Module.forRoot(),
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatTableModule
   ],
   exports:[RouterModule],
   bootstrap: [AppComponent]

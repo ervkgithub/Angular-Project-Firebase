@@ -1,0 +1,81 @@
+  <div class="row">
+    <div class="col-md-5 mt-4">
+        <form #userForm="ngForm" class="">     
+              <div class="col-md-12">
+                <div class="col-md-12">
+                  <mat-form-field class="col-md-10">
+                    <mat-label>Name</mat-label>
+                    <input type="text" matInput name="name" ngModel />
+                  </mat-form-field>
+                </div>
+                <div class="col-md-12">
+                  <mat-form-field class="col-md-10">
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput name="email" ngModel  />
+                  </mat-form-field>
+                </div>
+                <div class="col-md-12">
+                  <mat-form-field class="col-md-10">
+                    <mat-label>Mobile</mat-label>
+                    <input type="number" matInput name="mobile" ngModel />
+                  </mat-form-field>
+                </div>
+                <div class="col-md-12">
+                  <mat-form-field class="col-md-10">
+                    <mat-label>Age</mat-label>
+                    <input type="text" matInput name="age" ngModel />
+                  </mat-form-field>
+                </div>
+                <div class="col-md-12">
+                  <button
+                    class="btn btn-primary"
+                    color="primary"
+                    type="submit"
+                    (click)="updateUser()"
+                  >
+                    Update User
+                  </button>
+                  &nbsp;&nbsp;&nbsp;
+                  <button
+                    class="btn btn-danger"
+                    color="primary"
+                    (click)="userForm.reset()"
+                    type="button"
+                  >
+                    Reset</button
+                  >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+              </div>
+          </form>
+    </div>
+    <div class="col-md-7 mt-3">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Mobile</th>
+                <th scope="col">Age</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of allUsers; index as i">
+                <th scope="row">{{ i + 1}}</th>
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.mobile}}</td>
+                <td>{{user.age}}</td>
+                <td>
+                    <span class="text-danger fa fa-trash" (click)="deleteUser(user.id)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <!-- <span class="text-danger" (click)="deleteAllUser()">Delete User</span> -->
+                    <span class="fa fa-pencil" (click)="editUser(user.id)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span class="fa fa-plus">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+  </div>
+  

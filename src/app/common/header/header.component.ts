@@ -13,6 +13,8 @@ export class HeaderComponent {
   currentUser: any;
   cartCount: number = 0;
   loginStatus: boolean = false;
+  public searchTerm !: string;
+  
   constructor(private router: Router, private cartService: CartService) {}
 
   ngOnInit(): void {
@@ -30,6 +32,12 @@ export class HeaderComponent {
     });
   }
 
+  search(event:any){
+    this.searchTerm = (event.target as HTMLInputElement).value;
+    console.log(this.searchTerm);
+    this.cartService.search.next(this.searchTerm);
+  }
+
   checkLogin() {
     if (localStorage.getItem('token') != null) {
       this.logoutstatus = true;
@@ -44,6 +52,11 @@ export class HeaderComponent {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, Logout',
-    })
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem('token');
+        this.router.navigate(['/loginform']);
+      }
+    });
   }
 }

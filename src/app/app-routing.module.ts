@@ -10,6 +10,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { CartComponent } from './common/cart/cart.component';
 import { PaymentComponent } from './common/payment/payment.component';
+import { AllusersComponent } from './allusers/allusers.component';
 
 const routes: Routes = [
   { 
@@ -23,6 +24,10 @@ const routes: Routes = [
   { 
     path: 'cart', 
     component: CartComponent, 
+  },
+  { 
+    path: 'users', 
+    component: AllusersComponent, 
   },
   { 
     path: 'payment', 

@@ -24,6 +24,10 @@
               type="search"
               placeholder="Search training..."
               aria-label="Search"
+              [(ngModel)]="searchTerm" 
+              (keyup)="search($event)" 
+              placeholder="search users"
+              name="searchTerm"
             />
           </form>
         </li>
@@ -40,6 +44,9 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/registerform" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Register</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/users" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">All Users</a>
+        </li>
         <ng-container *ngIf="!logoutstatus; else logoutStatus">
           <li class="nav-item">
             <a class="nav-link" routerLink="/loginform" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Login</a>
@@ -47,6 +54,7 @@
         </ng-container>
 
         <ng-template #logoutStatus>
+
           <li class="nav-item">
             <a class="nav-link" routerLink="/profile" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">My Profile</a>
           </li>
