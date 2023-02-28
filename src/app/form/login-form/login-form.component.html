@@ -1,0 +1,75 @@
+
+<form #loginform="ngForm" class="mt-5 mb-5">
+  <div class="row">
+    <div class="col-md-6">
+      <img src="../../../assets/login.jpg" />
+    </div>
+    <div class="col-md-6">
+      <div class="col-md-12">
+        <mat-form-field class="col-md-10">
+          <mat-label>Email</mat-label>
+          <input
+            type="email"
+            matInput
+            [(ngModel)]="logintdf.email"
+            name="email"
+            required
+            #email="ngModel"
+          />
+        </mat-form-field>
+        <div
+          [hidden]="
+            email.valid || email.invalid || email.pristine || email.touched
+          "
+        >
+          Email is required
+        </div>
+      </div>
+      <div class="col-md-12">
+        <mat-form-field class="col-md-10">
+          <mat-label>Password</mat-label>
+          <input
+            type="password"
+            matInput
+            [(ngModel)]="logintdf.password"
+            name="password"
+            required
+            #password="ngModel"
+          />
+        </mat-form-field>
+      </div>
+      <div
+        [hidden]="
+          password.valid ||
+          password.invalid ||
+          password.pristine ||
+          password.touched
+        "
+      >
+        Password is required
+      </div>
+      <div class="col-md-12 text-right">
+        <button
+          [disabled]="!loginform.form.valid"
+          class="btn btn-primary"
+          color="primary"
+          type="submit"
+          (click)="btnSubmit(loginform)"
+        >
+          Login</button
+        >&nbsp;&nbsp;&nbsp;
+        <button
+          [disabled]="!loginform.form.valid"
+          class="btn btn-danger"
+          (click)="loginform.form.reset()"
+          type="button"
+        >
+          Reset</button
+        >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a class="text-primary" routerLink="/registerform"
+          >New User ? Registered here!</a
+        >
+      </div>
+    </div>
+  </div>
+</form>

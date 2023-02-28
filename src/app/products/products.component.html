@@ -1,0 +1,59 @@
+<div class="container">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+      <li class="breadcrumb-item active"><a>Products</a></li>
+    </ol>
+  </nav>
+  <h1 class="mt-5 mb-4 text-center text-primary">All Products</h1>
+
+  <div class="product-list-wrap">
+    <ul class="product-list row">
+      <li
+        class="col-md-4"
+        *ngFor="
+          let product of products
+            | paginate : { itemsPerPage: 5, currentPage: page }
+        "
+      >
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title-group>
+              <mat-card-title>{{ product.title.slice(0, 10) }}</mat-card-title>
+              <mat-card-subtitle class="text-warning">{{
+                product.brand
+              }}</mat-card-subtitle>
+              <mat-card-subtitle class="text-primary"
+                >Rs.{{ product.price }}</mat-card-subtitle
+              >
+              <mat-card-subtitle class="text-success"
+                >-{{ product.rating.rate }}%</mat-card-subtitle
+              >
+              <img mat-card-md-image src="{{ product.image }}" />
+            </mat-card-title-group>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-card-subtitle class="text-danger mt-4 mb-2">{{
+              product.category | titlecase
+            }}</mat-card-subtitle>
+            <p class="mb-3">{{ product.description.slice(0, 50) }}...</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button class="btn btn-primary" (click)="addtocart(product)">
+              Add to Cart</button
+            >&nbsp;&nbsp;&nbsp;
+            <button
+              class="btn btn-info"
+              routerLink="{{ '/products/' + product.id }}"
+            >
+              Buy Now
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </li>
+    </ul>
+    <div class="has-text-centered">
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
+  </div>
+</div>

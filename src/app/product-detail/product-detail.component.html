@@ -1,0 +1,31 @@
+<div class="container" *ngIf="productDetail">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+      <li class="breadcrumb-item"><a routerLink="/products">Products</a></li>
+      <li class="breadcrumb-item active"><a>Products Detail</a></li>
+    </ol>
+  </nav>
+
+  <div class="row">
+    <div class="col-md-4">
+     <div class="pd-image-wrap">
+      <img class="pd-image" mat-card-md-image src="{{ productDetail.image }}" />
+    </div>
+    </div>
+    <div class="col-md-6">
+      <h1 class="text-success"><strong>{{ productDetail.title }}</strong></h1>
+      <p class="text-warning">{{ productDetail.brand }}</p>
+      <p><strong>Price:</strong><span class="text-primary"> Rs.{{ productDetail.price }}</span></p>
+      <p><strong>Category:</strong> <span class="text-danger mt-3"> {{ productDetail.category | titlecase }}</span></p>
+      <p class="mb-4 mt-4">{{ productDetail.description }}</p>
+      <div>
+        <button class="btn btn-primary" (click)="addtocart(productDetail)">Add to cart</button>&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-info">Proceed to Checkout</button>&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-warning" (click)="editSingleProductDetail()">
+          Edit Product
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

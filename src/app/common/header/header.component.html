@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-custom bg-product">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3W7g2HfadsesmgR9HMedK80yEhkUH_o-vc2ivFkHgPNGzeHTDAHE2UyzMMD4UpZDEWas&usqp=CAU" width="50" />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <form class="form-inline global-search">
+            <input
+              class="form-control"
+              type="search"
+              placeholder="Search training..."
+              aria-label="Search"
+            />
+          </form>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/products" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/cart" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}"><span class="cart">Cart<sup>{{cartCount}}</sup></span></a>
+        </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/registerform" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Register</a>
+        </li>
+        <ng-container *ngIf="!logoutstatus; else logoutStatus">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/loginform" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">Login</a>
+          </li>
+        </ng-container>
+
+        <ng-template #logoutStatus>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/profile" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">My Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" (click)="logout()">Logout</a>
+          </li>
+        </ng-template>
+        
+      </ul>
+    </div>
+  </div>
+</nav>

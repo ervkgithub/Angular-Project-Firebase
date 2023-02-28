@@ -1,0 +1,65 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Roboto', sans-serif; font-size: 18px !important;}
+
+a{
+    text-decoration: none !important;
+}
+
+.mat-mdc-card{
+    background-color: #fff !important;
+    margin-bottom: 30px;
+    padding: 15px 20px;
+}
+
+.mat-mdc-card-subtitle{
+    color: #333 !important;
+}
+
+.navbar-expand-lg .navbar-collapse{
+    justify-content: flex-end;
+}
+
+.bg-custom{
+    background-color: #937940!important;
+    padding: 20px !important;
+    margin-bottom: 60px;
+}
+
+.nav-link{
+    color: #000 !important;
+}
+
+.min-body{
+    min-height: 50vh;
+}
+
+.navbar-brand img{
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    position: absolute;
+    top: -15px;
+}
+
+.navbar-nav .show > .nav-link, .navbar-nav .nav-link.active{
+    color: #fff !important;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.fa,.fab{
+    color: #2e5afd !important;
+}
+
+ul, li{
+    list-style: none;
+}
+
+.nav-item a{
+    cursor: pointer;
+    &:hover{
+        color: #fff !important;
+    }
+}

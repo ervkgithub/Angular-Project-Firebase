@@ -1,0 +1,24 @@
+
+<app-header></app-header>
+<div class="container min-body">
+  <ng-container *ngIf="!loggedin; else homeScreen">
+    <app-login-form (isloggedin)="checkloginstatus($event)"></app-login-form>
+  </ng-container>
+  <ng-http-loader
+    [backdrop]="false"
+    [backgroundColor]="'#ff0000'"
+    [debounceDelay]="100"
+    [extraDuration]="300"
+    [minDuration]="300"
+    [spinner]="spinnerStyle.skWave"
+  >
+    <ng-template #homeScreen>
+      <div class="container-fluid">
+        <main role="main" class="container">
+          <router-outlet></router-outlet>
+        </main>
+      </div>
+    </ng-template>
+  </ng-http-loader>
+</div>
+<app-footer></app-footer>
