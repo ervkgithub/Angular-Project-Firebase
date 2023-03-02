@@ -13,6 +13,7 @@ export class HeaderComponent {
   currentUser: any;
   cartCount: number = 0;
   loginStatus: boolean = false;
+  
   public searchTerm !: string;
   
   constructor(private router: Router, private cartService: CartService) {}
@@ -54,6 +55,7 @@ export class HeaderComponent {
       confirmButtonText: 'Yes, Logout',
     }).then((result) => {
       if (result.isConfirmed) {
+        this.logoutstatus = false;
         localStorage.removeItem('token');
         this.router.navigate(['/loginform']);
       }

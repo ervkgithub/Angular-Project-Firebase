@@ -13,7 +13,7 @@
         class="col-md-4"
         *ngFor="
           let product of products
-            | paginate : { itemsPerPage: 5, currentPage: page }
+            | paginate : { itemsPerPage: 5, currentPage: page } | filter:searchKey:'title';
         "
       >
         <mat-card class="example-card">

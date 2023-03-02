@@ -7,13 +7,5 @@ import { Component } from '@angular/core';
 })
 export class ProfileComponent {
   ngOnInit() {
-    if (!localStorage.getItem('refresh')) { 
-      localStorage.setItem('refresh', 'no reload'); 
-      setTimeout(function(){;
-      location.reload(); 
-    },2000)
-    } else {
-      localStorage.removeItem('refresh') 
-    }
   }
 }

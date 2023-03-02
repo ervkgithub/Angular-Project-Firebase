@@ -5,6 +5,7 @@ import { NgForm } from '@angular/forms';
 import { map } from 'rxjs/operators';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { Users } from '../TypeDefs/users';
+import { CartService } from '../service/cart.service';
 
 @Component({
   selector: 'app-allusers',
@@ -21,10 +22,13 @@ export class AllusersComponent implements OnInit {
 
   @ViewChild('userForm') form : NgForm;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private cartService:CartService) {}
 
   ngOnInit() {
     this.fetchUsers();
+    this.cartService.search.subscribe((val:any)=>{
+      this.searchKey = val;
+    })
   }
 
   fetchUsers() {

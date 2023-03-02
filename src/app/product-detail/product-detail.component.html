@@ -21,7 +21,7 @@
       <p class="mb-4 mt-4">{{ productDetail.description }}</p>
       <div>
         <button class="btn btn-primary" (click)="addtocart(productDetail)">Add to cart</button>&nbsp;&nbsp;&nbsp;
-        <button class="btn btn-info">Proceed to Checkout</button>&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-info" routerLink="/payment">Proceed to Checkout</button>&nbsp;&nbsp;&nbsp;
         <button class="btn btn-warning" (click)="editSingleProductDetail()">
           Edit Product
         </button>

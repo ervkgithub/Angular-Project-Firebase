@@ -1,17 +1,21 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { of } from 'rxjs';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+
 @Injectable({
   providedIn: 'root',
 })
-export class AuthguardService {
+export class AuthguardService  {
+
   fakeusername = 'admin';
   fakepassword = 'admin';
 
   constructor() {}
 
   login(email: any, password: any) {
+    console.log("email", email);
+    console.log("pass", password);
     if (email == this.fakeusername && password == this.fakepassword) {
       localStorage.setItem('token', '1234567890');
       Swal.fire({
@@ -42,4 +46,5 @@ export class AuthguardService {
     }
     return false;
   }
+
 }

@@ -30,6 +30,7 @@ import { PaymentComponent } from './common/payment/payment.component';
 import { AllusersComponent } from './allusers/allusers.component';
 import {MatTableModule} from '@angular/material/table';
 import { FilterPipe } from '../app/filter/filter.pipe';
+import {MatStepperModule} from '@angular/material/stepper';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { FilterPipe } from '../app/filter/filter.pipe';
     NgHttpLoaderModule.forRoot(),
     SweetAlert2Module.forRoot(),
     NgxPaginationModule,
-    MatTableModule
+    MatTableModule,
+    MatStepperModule
   ],
   exports:[RouterModule],
   bootstrap: [AppComponent]

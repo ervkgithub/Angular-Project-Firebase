@@ -57,6 +57,7 @@ export class RegisterComponent {
             }).then((result) => {
               if (result.isConfirmed) {
                 this.userForm.reset();
+                this.router.navigate(['/users']);
               }
             });
           }

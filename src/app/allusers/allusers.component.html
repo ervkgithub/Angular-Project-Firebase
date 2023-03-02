@@ -1,5 +1,5 @@
   <div class="row">
-    <div class="col-md-5 mt-4">
+    <div class="col-md-4 mt-4">
         <form #userForm="ngForm" class="">     
               <div class="col-md-12">
                 <div class="col-md-12">
@@ -48,7 +48,7 @@
               </div>
           </form>
     </div>
-    <div class="col-md-7 mt-3">
+    <div class="col-md-8 mt-3">
         <table class="table">
             <thead>
               <tr>
@@ -61,7 +61,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let user of allUsers; index as i">
+              <tr *ngFor="let user of allUsers | filter:searchKey:'name'; index as i">
                 <th scope="row">{{ i + 1}}</th>
                 <td>{{user.name}}</td>
                 <td>{{user.email}}</td>
@@ -71,7 +71,7 @@
                     <span class="text-danger fa fa-trash" (click)="deleteUser(user.id)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                     <!-- <span class="text-danger" (click)="deleteAllUser()">Delete User</span> -->
                     <span class="fa fa-pencil" (click)="editUser(user.id)">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                    <span class="fa fa-plus">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span routerLink="/registerform" class="fa fa-plus">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 </td>
               </tr>
             </tbody>

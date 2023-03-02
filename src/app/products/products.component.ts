@@ -10,6 +10,7 @@ import { CartService } from '../service/cart.service';
 export class ProductsComponent implements OnInit {
   products:any;
   page: number = 1;
+  searchKey:string ="";
   @Output() productDetail:EventEmitter<any> = new EventEmitter<any>();
 
   constructor(private _commonService: CommonService, private cartService : CartService){
@@ -22,6 +23,9 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllProducts();
+    this.cartService.search.subscribe((val:any)=>{
+      this.searchKey = val;
+    })
   }
 
   addtocart(item: any){

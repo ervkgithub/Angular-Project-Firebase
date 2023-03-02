@@ -1,6 +1,11 @@
-import { Component, ViewChild, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
 import { AuthguardService } from '../../service/authguard.service';
 import { Router, ActivatedRoute } from '@angular/router';
+
+import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+import { Users } from '../../TypeDefs/users';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login-form',
@@ -8,35 +13,51 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent {
+  allUsers: Users[] = [];
+  @Output() isloggedin = new EventEmitter<any>();
+  returnUrl: any;
+  logintdf = {
+    email: '',
+    password: '',
+  };
+
   constructor(
     private auth: AuthguardService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private http:HttpClient
   ) {
     if (localStorage.getItem('token') != null) {
       this.router.navigate(['/profile']);
     }
   }
 
-  logintdf = {
-    email: '',
-    password: '',
-  };
 
   ngOnInit() {
-    if (!localStorage.getItem('refresh')) { 
-      localStorage.setItem('refresh', 'no reload'); 
-      setTimeout(function(){;
-      location.reload(); 
-    },2000)
-    } else {
-      localStorage.removeItem('refresh') 
-    }
+    this.fetchUsers();
   }
 
-  @Output() isloggedin = new EventEmitter<any>();
-
-  returnUrl: any;
+  fetchUsers() {
+    this.http
+      .get<{ [key: string]: Users }>(
+        'https://mern-project-a9f3d-default-rtdb.firebaseio.com/users.json'
+      )
+      .pipe(
+        map((res) => {
+          const userss = [];
+          for (const key in res) {
+            if (res.hasOwnProperty(key)) {
+              userss.push({ ...res[key], id: key });
+            }
+          }
+          return userss;
+        })
+      )
+      .subscribe((userss) => {
+        this.allUsers = userss;
+        console.log("allUsers", this.allUsers)
+      });
+  }
 
   btnSubmit(userForm: any) {
     console.log('userForm', userForm);
