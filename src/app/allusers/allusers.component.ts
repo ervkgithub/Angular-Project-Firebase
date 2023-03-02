@@ -63,7 +63,7 @@ export class AllusersComponent implements OnInit {
           position: 'center',
           icon: 'success',
           title: 'Amazing!',
-          text: 'Deletion Successful!',
+          text: 'User Deletion Successful!',
           showConfirmButton: true,
         }).then((result) => {
           if (result.isConfirmed) {
