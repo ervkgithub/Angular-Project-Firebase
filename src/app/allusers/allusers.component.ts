@@ -57,8 +57,20 @@ export class AllusersComponent implements OnInit {
 
   deleteUser(id:string){
     this.http.delete('https://mern-project-a9f3d-default-rtdb.firebaseio.com/users/'+id+'.json')
-    .subscribe((result)=>{
-      console.log("result", result);
+    .subscribe((dUser)=>{
+      if (dUser != null) {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Amazing!',
+          text: 'Deletion Successful!',
+          showConfirmButton: true,
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.fetchUsers();
+          }
+        });
+      }
     })
   }
 
@@ -78,7 +90,21 @@ export class AllusersComponent implements OnInit {
     console.log("this.currentUserId", this.currentUserId)
     console.log("form", this.form.value)
     this.http.put('https://mern-project-a9f3d-default-rtdb.firebaseio.com/users/'+this.currentUserId+'.json', this.form.value)
-    .subscribe();
+    .subscribe((uUser)=>{
+      if (uUser != null) {
+        Swal.fire({
+          position: 'center',
+          icon: 'success',
+          title: 'Amazing!',
+          text: 'Updation Successful!',
+          showConfirmButton: true,
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.fetchUsers();
+          }
+        });
+      }
+    })
   }
 
   // deleteAllUser(){
