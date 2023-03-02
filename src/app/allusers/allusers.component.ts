@@ -58,7 +58,6 @@ export class AllusersComponent implements OnInit {
   deleteUser(id:string){
     this.http.delete('https://mern-project-a9f3d-default-rtdb.firebaseio.com/users/'+id+'.json')
     .subscribe((dUser)=>{
-      if (dUser != null) {
         Swal.fire({
           position: 'center',
           icon: 'success',
@@ -70,7 +69,6 @@ export class AllusersComponent implements OnInit {
             this.fetchUsers();
           }
         });
-      }
     })
   }
 
