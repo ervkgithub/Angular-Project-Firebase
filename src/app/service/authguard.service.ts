@@ -2,16 +2,22 @@ import { Injectable, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { of } from 'rxjs';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import { LoginService } from './login.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthguardService  {
+export class AuthguardService implements OnInit {
 
+  users:any;
   fakeusername = 'admin';
   fakepassword = 'admin';
 
-  constructor() {}
+  constructor(private _loginService:LoginService) {}
+
+  ngOnInit() {
+    console.log("deweweq", this._loginService.allUsers);
+  }
 
   login(email: any, password: any) {
     console.log("email", email);
@@ -46,5 +52,17 @@ export class AuthguardService  {
     }
     return false;
   }
+
+  // getAllUserList(){
+  //   this._loginService.fetchUsers().subscribe({
+  //     next:(data)=>{
+  //       console.log("user data", data);
+  //       this.users = data;
+  //     },
+  //     error:(error)=>{
+  //       console.log(error);
+  //     }
+  //   })
+  // }
 
 }

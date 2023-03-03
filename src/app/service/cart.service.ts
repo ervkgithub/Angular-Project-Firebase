@@ -35,7 +35,7 @@ export class CartService {
       console.log("a.total", a.price)
       grandTotal += a.price;
     })
-    return grandTotal;
+    return Math.floor(grandTotal);
   }
 
   removeCartItem(product: any){
