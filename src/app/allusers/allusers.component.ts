@@ -20,7 +20,7 @@ export class AllusersComponent implements OnInit {
   currentUserId: string;
   currentUserValue : Users;
 
-  @ViewChild('userForm') form : NgForm;
+  @ViewChild('userFormU') form : NgForm;
 
   constructor(private http: HttpClient, private cartService:CartService) {}
 
